@@ -5,16 +5,26 @@ const promptInstance = promptSync({
 	sigint: true // allows CTRL+C to exit the app
 });
 
+// some comment here
+// comment for naomi
+
 let userInput = null;
 let userEnteredNumber = false;
 do {
 	userInput = promptInstance("What is the coolest number in the universe?");
 
+	if (!parseInt(userInput) && !parseFloat(userInput)){
+		//throw "User did not enter a number";
+		throw new Error("User did not enter a number.");
+	}
+
+
+
 	let userInputAsNumber = Number(userInput);
 
 	if (userInputAsNumber === 42){
 		console.log("The universe thanks you for figuring out the answer!!");
-        userEnteredNumber = true;
+		userEnteredNumber = true;
 	} else {
 		console.log("The universe seems unfulfilled...");
 	}	
